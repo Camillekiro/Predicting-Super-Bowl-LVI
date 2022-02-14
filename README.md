@@ -1,2 +1,5 @@
 # Predicting-Super-Bowl-LVI
-predicting the score of the home team and visiting team using R
+
+
+Predicting the score of the home team and visiting team for super bowl LVI using R.
+The data for this analysis was provided by advanced sports analytics.
