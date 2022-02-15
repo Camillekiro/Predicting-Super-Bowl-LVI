@@ -1,6 +1,7 @@
 library(readxl) #package used to extract excel file
 library(caTools) #package used to split the data into test/train set
 library(stats) #package for linear regression model
+library(psych) #package for summary statistics 
 
 #the data was filtered in excel using the Team_abbrev variable for CIN & LAR.
 #used to predict home_score
@@ -30,6 +31,9 @@ defense_data$game_date<- NULL
 defense_data$vis_score <- NULL
 #removed vis_score due to collinearity with home_score (dependent variable)
 
+#summary statistics 
+describe(defense_data)
+       
 ##removing unnecessary columns
 defense_data_beng[,1:2]<-list(NULL)
 defense_data_beng$Team_abbrev <- NULL
@@ -50,6 +54,9 @@ defense_data_beng$points_allowed_14_20 <- NULL
 defense_data_beng$points_allowed_21_27 <- NULL
 defense_data_beng$points_allowed_28_34 <- NULL
 defense_data_beng$points_allowed_35 <- NULL
+       
+#summary statistics 
+describe(defense_data_beng)
 
 #Splitting the data into training set and testing set
 split2 = sample.split(defense_data$home_score, SplitRatio = 0.8)
@@ -98,7 +105,7 @@ coef(Model2)
 #vis_score result: 23.097
 
 
-
+#actual super bowl LVI score: 23-20
 #data source:
 #https://www.advancedsportsanalytics.com/nfl-raw-data
 
